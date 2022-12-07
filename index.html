@@ -6,17 +6,29 @@
             .centeredDiv {
                 margin: auto;
                 width: 50%;
-                border: 3px solid rgb(0, 0, 107);
+                border: 3px solid #00006b;
                 border-radius: 12px;
                 padding: 10px;
                 text-align: center;
-                font-family: Arial, Helvetica, sans-serif;
                 background-color: rgba(44, 44, 44, 0.242);
                 backdrop-filter: blur(4px);
             }   
+            .header {
+                color: #00006b;
+            }
             body {
                 background-image: url('./penguins.jpg');
                 background-size: cover;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .footer {
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: black;
+                color: white;
+                text-align: center;
+                position: fixed;
             }
         </style>
     </head>
@@ -24,7 +36,7 @@
 
     <body>
         <div class="centeredDiv">
-            <h1>PGDP Score Calculator</h1>
+            <h1 class="header">PGDP Score Calculator</h1>
             <h2>See how you're <i>really</i> doing in PGDP</h2>
             <br>    
             <h3>Artemis scores are often outdated and result in wrong percentages being shown.</h3>
@@ -37,6 +49,10 @@
             <br>
             <h3 id="result" hidden></h3>
             <h3 id="failOrPass" hidden></h3>
+
+        </div>
+        <div class="footer">
+            <h6>The information on this website is provided ‘as is’ with no guarantee of accuracy or completeness. Your actual results may vary. This is no official TUM service and in no way affiliated with or endorsed by TUM.</h6>
         </div>
 
         <script>
