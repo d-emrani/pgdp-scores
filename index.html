@@ -1,0 +1,76 @@
+    <!DOCTYPE html>
+<html>
+    <head>
+        <title>PGDP Score Calculator</title>
+        <style>
+            .centeredDiv {
+                margin: auto;
+                width: 50%;
+                border: 3px solid rgb(0, 0, 107);
+                border-radius: 12px;
+                padding: 10px;
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: rgba(44, 44, 44, 0.242);
+                backdrop-filter: blur(4px);
+            }   
+            body {
+                background-image: url('./penguins.jpg');
+                background-size: cover;
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <div class="centeredDiv">
+            <h1>PGDP Score Calculator</h1>
+            <h2>See how you're <i>really</i> doing in PGDP</h2>
+            <br>    
+            <h3>Artemis scores are often outdated and result in wrong percentages being shown.</h3>
+            <h4>Enter your current score and the current week number below to see your real score:</h4>
+
+            <input type="number" id="currentScore" placeholder="Score">
+            <input type="number" id="currentWeek" placeholder="Week">
+            <button type="button" onclick="calcScore()" id="calcButton">Calculate!</button>
+            <br>
+            <br>
+            <h3 id="result" hidden></h3>
+            <h3 id="failOrPass" hidden></h3>
+        </div>
+
+        <script>
+            function calcScore() {
+                let darkRed = "rgb(143, 0, 0)";
+
+                let currentScore = document.getElementById('currentScore').value
+                let currentWeek = document.getElementById('currentWeek').value
+
+                let resultField = document.getElementById('result');
+                let failOrPass = document.getElementById('failOrPass');
+
+
+                if (!currentScore || !currentWeek) {
+                    resultField.textContent = "Invalid input!";
+                    resultField.style.color = darkRed;
+                    resultField.hidden = false;
+                    failOrPass.hidden = true;
+                    return;
+                }
+
+                let maxScore = 5 + (currentWeek-2) * 20;
+                let percentage = currentScore/maxScore * 100;
+                let isFailingScore = percentage < 40;
+
+                resultField.textContent = "You currently have " + currentScore + "/" + maxScore + " points. This amounts to " + percentage.toFixed(2) + "%."
+                resultField.hidden = false;
+
+                failOrPass.textContent = (isFailingScore) ? "Oh no! You currently have a failing score." : "Congrats! You're passing the course so far!" 
+                failOrPass.style.color = (isFailingScore) ? darkRed : "green";
+                failOrPass.hidden = false;
+            }
+        </script>
+
+    </body>
+</html>
+
